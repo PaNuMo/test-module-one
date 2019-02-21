@@ -1,0 +1,4 @@
+Bundle-Name: module-one
+Bundle-SymbolicName: com.catalyst.module.one
+Bundle-Version: 1.0.0
+Export-Package: com.catalyst.module.one.constants
