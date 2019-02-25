@@ -4,21 +4,20 @@ pipeline {
     stages {
 
       stage('Preparation') { // for display purposes
+          def MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
+
           steps {// Get Module One
               checkout([
-                $class: 'GitSCM',
-                branches: [[name: '*/master']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/lib/jenkins/jenkins-ws/modules/one']],
-                submoduleCfg: [],
-                userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
+                   $class: 'GitSCM',
+                   branches: [[name: '*/master']],
+                   extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: MODULE_PATH]],
+                   userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
               ])
-
-              sh 'printenv'
-
 	         }
 	     }
 
-
+       stage('Build') {
+           sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
+       }
     }
 }
