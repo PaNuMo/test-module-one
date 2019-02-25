@@ -17,7 +17,9 @@ pipeline {
 	     }
 
        stage('Build') {
-           sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
+           steps {
+               sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
+           }
        }
     }
 }
