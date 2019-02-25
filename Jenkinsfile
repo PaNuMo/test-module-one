@@ -1,11 +1,9 @@
 pipeline {
     agent any
-
+    def MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
     stages {
 
       stage('Preparation') { // for display purposes
-          def MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
-
           steps {// Get Module One
               checkout([
                    $class: 'GitSCM',
