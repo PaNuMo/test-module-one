@@ -14,10 +14,7 @@ pipeline {
                 userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
               ])
 
-              echo '************************************** START'
-              echo '$GIT_BRANCH'
-              echo 'GIT_BRANCH'
-              echo $GIT_BRANCH
+              sh 'printenv'
 
 	         }
 	     }
