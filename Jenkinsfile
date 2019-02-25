@@ -4,16 +4,18 @@ pipeline {
     stages {
 
 	stage('Preparation') { // for display purposes       
-       	    // Get Module One
-            dir('/var/lib/jenkins/jenkins-ws/modules/one') {
-                git(
-                    poll: true,
-                    url: 'https://github.com/PaNuMo/test-module-one',
-                    branch: 'master'
-                )
-            }
+       	    steps {// Get Module One
+		
+		checkout([  
+          $class: 'GitSCM', 
+          branches: [[name: '*/master']], 
+          doGenerateSubmoduleConfigurations: false, 
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/lib/jenkins/jenkins-ws/modules/one']], 
+          submoduleCfg: [], 
+          userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
+      ])
+	    }
 	}
 
-println('Status LALALALALALALALALALALLA ')	   
     }
 }
