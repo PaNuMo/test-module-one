@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk8'
+        jdk 'Jenkins_Java'
     }
 
     environment {
@@ -23,7 +23,9 @@ pipeline {
 
        stage('Build') {
            steps {
-               sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
+               dir('/var/lib/jenkins/jenkins-ws') {
+                   sh './gradlew clean deploy'
+               }
            }
        }
     }
