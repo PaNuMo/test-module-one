@@ -12,7 +12,7 @@ pipeline {
               checkout([
                    $class: 'GitSCM',
                    branches: [[name: '*/master']],
-                   extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: $MODULE_PATH]],
+                   extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: env.MODULE_PATH]],
                    userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
               ])
 	         }
