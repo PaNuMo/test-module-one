@@ -1,6 +1,10 @@
 pipeline {
     agent any
-    def MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
+
+    environment {
+        MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
+    }
+
     stages {
 
       stage('Preparation') { // for display purposes
@@ -8,7 +12,7 @@ pipeline {
               checkout([
                    $class: 'GitSCM',
                    branches: [[name: '*/master']],
-                   extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: MODULE_PATH]],
+                   extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: $MODULE_PATH]],
                    userRemoteConfigs: [[url: 'https://github.com/PaNuMo/test-module-one']]
               ])
 	         }
