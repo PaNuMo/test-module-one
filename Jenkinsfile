@@ -6,9 +6,8 @@ pipeline {
     }
 
     stages {
-
-      stage('Preparation') { // for display purposes
-          steps {// Get Module One
+      stage('Preparation') {
+          steps {
               checkout([
                    $class: 'GitSCM',
                    branches: [[name: '*/master']],
@@ -20,7 +19,8 @@ pipeline {
 
        stage('Build') {
            steps {
-               sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
+               sh 'cd /var/lib/jenkins/jenkins-ws'
+               sh './gradlew clean deploy'
            }
        }
     }
