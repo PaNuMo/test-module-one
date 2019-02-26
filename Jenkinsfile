@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'jdk8'
+    }
+
     environment {
         MODULE_PATH = "/var/lib/jenkins/jenkins-ws/modules/one"
     }
@@ -19,8 +23,7 @@ pipeline {
 
        stage('Build') {
            steps {
-               sh 'cd /var/lib/jenkins/jenkins-ws'
-               sh './gradlew clean deploy'
+               sh '/var/lib/jenkins/jenkins-ws/gradlew clean deploy'
            }
        }
     }
