@@ -34,12 +34,5 @@ public class ModuleOnePortlet extends MVCPortlet {
 	
 	private static final Log _LOG = LogFactoryUtil.getLog(ModuleOnePortlet.class);
 	
-	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
-			throws IOException, PortletException {
-		
-		_LOG.info("MODULE ONE DO VIEW");
-		
-		super.doView(renderRequest, renderResponse);
-	}
+
 }
